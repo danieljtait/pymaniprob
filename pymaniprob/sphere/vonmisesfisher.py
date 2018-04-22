@@ -1,3 +1,4 @@
+import numpy as np
 from pymaniprob.probabilitydistributions import MultivariateProbabilityDistribution
 
 
@@ -9,7 +10,7 @@ class BaseVonMisesFisher(MultivariateProbabilityDistribution):
         pass
 
 
-class FrozenVonMisesFisher(BaseVonMises):
+class FrozenVonMisesFisher(BaseVonMisesFisher):
     def __init__(self, **kwargs):
         super(FrozenVonMisesFisher, self).__init__(**kwargs)
 
