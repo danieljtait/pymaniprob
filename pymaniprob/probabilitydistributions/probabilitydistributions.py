@@ -5,6 +5,7 @@ Definition of the base classes
 - MultivariateProbabilityDistribution
 
 """
+import numpy as np
 
 
 class ProbabilityDistribution:
@@ -44,3 +45,34 @@ class MultivariateProbabilityDistribution(ProbabilityDistribution):
             return _handle_muldim_input(x, self._logpdf, self.dim, self._pdf_is_vec)
         else:
             return np.log(self.pdf(x))
+
+
+def _handle_muldim_input(x, func, dim, is_ufunc=False):
+
+    if isinstance(x, np.ndarray):
+        assert(x.shape[1] == dim)
+
+        if is_ufunc:
+            return func(x)
+
+        else:
+            return np.array([func(_x) for _x in x])
+    
+    elif isinstance(x, float):
+        if dim == 1:
+            return func(x)
+        else:
+            msg = "scalar input does not agree with dimension {}".format(dim)
+            raise ValueError(msg)
+
+    elif isinstance(x, list):
+            # Rather than checking just try it and see if
+            # if works
+            #if len(x) != self.dim:
+            #    raise ValueError
+            #else:
+            #    print("All good")        
+            try:
+                return func(x)
+            except:
+                raise ValueError
