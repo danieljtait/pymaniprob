@@ -22,8 +22,8 @@ def cart2sph(x, y, z):
 m = sph2cart(-np.deg2rad(100),
              np.deg2rad(50), 1)
 
-m = np.array(m)
-#m = np.array([0., 0., 1.])
+#m = np.array(m)
+m = np.array([0., 0., 1.])
 X = VonMisesFisher.rvs(m=m, k=20, p=3, size=100)
 
 az, el, _ = cart2sph(*X.T)
