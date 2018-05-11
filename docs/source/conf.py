@@ -38,6 +38,8 @@ release = '0.0.1'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
+sys.path.append(os.path.abspath('sphinxext'))
+
 extensions = [
     'matplotlib.sphinxext.mathmpl',
     'matplotlib.sphinxext.only_directives',
