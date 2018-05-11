@@ -22,9 +22,9 @@ def cart2sph(x, y, z):
 m = sph2cart(-np.deg2rad(100),
              np.deg2rad(50), 1)
 
-#m = np.array(m)
-m = np.array([0., 0., 1.])
-X = VonMisesFisher.rvs(m=m, k=20, p=3, size=100)
+m = np.array(m)
+#m = np.array([0., 0., 1.])
+X = VonMisesFisher.rvs(m=m, k=50, p=3, size=20000)
 
 az, el, _ = cart2sph(*X.T)
 
@@ -39,8 +39,17 @@ map = Basemap(projection='ortho',lat_0=45,lon_0=-100,resolution='l')
 # draw the edge of the map projection region (the projection limb)
 #map.drawmapboundary(fill_color='aqua')
 # draw lat/lon grid lines every 30 degrees.
-map.drawmeridians(np.arange(0,360,30))
-map.drawparallels(np.arange(-90,90,30))
+#meridians = np.arange(0, 360, 30)
+meridians = np.arange(-180, 180, 30)
+map.drawmeridians(meridians)
+map.drawparallels(np.arange(-90,90,30), labels=[1, 1, 1, 1])
+
+
+for i in np.arange(len(meridians)):
+    plt.annotate(np.str(meridians[i]),xy=map(meridians[i],0),xycoords='data')
+
+#m.drawparallels(np.arange(-90.,120.,1),labels=[1,1,1,1], color='white', textcolor='white')
+
 # make up some data on a regular lat/lon grid.
 nlats = 73; nlons = 145; delta = 2.*np.pi/(nlons-1)
 lats = (0.5*np.pi-delta*np.indices((nlats,nlons))[0,:,:])
