@@ -40,8 +40,9 @@ release = '0.0.1'
 # ones.
 sys.path.append(os.path.abspath('sphinxext'))
 
+#    'matplotlib.sphinxext.mathmpl',
+
 extensions = [
-    'matplotlib.sphinxext.mathmpl',
     'matplotlib.sphinxext.only_directives',
     'matplotlib.sphinxext.plot_directive',
     'sphinx.ext.autodoc',
