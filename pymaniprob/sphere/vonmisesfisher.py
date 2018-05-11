@@ -63,7 +63,15 @@ class VonMisesFisher:
             return _updf(x)
 
     @classmethod
-    def rvs(self, m=None, k=None, p=None, size=1):
+    def rvs(self, m=None, k=1., p=None, size=1):
+
+        if sum([item is not None for item in [m, p]]) == 0:
+            msg = "One of 'm' and 'p' must be supplied."
+            raise ValueError(msg)
+
+        if m is None and p is not None:
+            m = np.eye(N=1, M=p, k=p-1).ravel()
+        
         if p == 3:
             rv = _vmf_rv_S2(m, k, size)
             if size == 1:

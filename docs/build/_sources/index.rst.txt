@@ -10,7 +10,9 @@ Welcome to pymaniprob's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   user/index
    all-about-me
+   
 
 Indices and tables
 ==================
