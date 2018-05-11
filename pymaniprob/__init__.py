@@ -1,5 +1,5 @@
-from .probabilitydistributions import *
-from .sphere import *
+from . import probabilitydistributions
+from . import sphere
 
 def message():
     print(VonMisesFisher)
