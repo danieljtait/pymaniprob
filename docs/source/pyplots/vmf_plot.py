@@ -63,6 +63,7 @@ ax.view_init(elev=60., azim=0.)
 plt.axis('off')
 plt.tight_layout()
 
+"""
 fig2 = plt.figure()
 fig2.suptitle("Von-Mises Fisher Random Variables")
 for nt, k in enumerate([20, 100]):
@@ -83,6 +84,6 @@ for nt, k in enumerate([20, 100]):
     
     plt.axis('off')
     plt.tight_layout()    
-
+"""
 
 plt.show()
