@@ -1,3 +1,0 @@
-numpydoc
-numpy >= 1.14.0
-matplotlib >= 2.2.0
