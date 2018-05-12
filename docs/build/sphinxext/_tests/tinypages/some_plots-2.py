@@ -1,0 +1,1 @@
+plt.plot(range(6))
