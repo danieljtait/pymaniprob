@@ -7,5 +7,5 @@ setup(name='pymaniprob',
       url='http://github.com/danieljtait/pymaniprob',
       license='MIT',
       packages=['pymaniprob'],
-      install_requires=['numpydoc',],
+      install_requires=['numpydoc', 'matplotlib'],
       zip_safe=False)
