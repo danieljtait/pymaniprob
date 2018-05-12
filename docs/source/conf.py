@@ -16,11 +16,11 @@ from __future__ import print_function
 import sys, os, re
 
 # -- Check Sphinx version -----
-import sphinx
-if sphinx.__version__ < "1.6":
-    raise RunTimeError("Sphinx 1.6 or newer required")
-
-needs_sphinx = '1.6'
+#import sphinx
+#if sphinx.__version__ < "1.6":
+#    raise RunTimeError("Sphinx 1.6 or newer required")
+#
+#needs_sphinx = '1.6'
 
 # -- Project information -----------------------------------------------------
 
