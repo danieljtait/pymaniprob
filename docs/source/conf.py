@@ -40,7 +40,13 @@ release = '0.0.1'
 # ones.
 sys.path.append(os.path.abspath('sphinxext'))
 
-
+extensions = ['matplotlib.sphinxext.only_directives',
+              'matplotlib.sphinxext.plot_directive',
+              'sphinx.ext.mathjax',
+              'sphinx.ext.autodoc',
+              'sphinx.ext.doctest',
+              'sphinx.ext.inheritance_diagram',
+              'numpydoc']
 #extensions = [
 #    'sphinx.ext.autodoc',
 #    'sphinx.ext.intersphinx',
@@ -50,12 +56,13 @@ sys.path.append(os.path.abspath('sphinxext'))
 #]
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinxext.only_directives',
-              'sphinxext.plot_directive',
-              'sphinx.ext.mathjax',
-              'sphinx.ext.autodoc',
-              'sphinx.ext.doctest',
-              'sphinx.ext.inheritance_diagram']
+#extensions = ['sphinxext.mathmpl',
+#              'sphinxext.only_directives',
+#              'sphinxext.plot_directive',
+#              'sphinx.ext.mathjax',
+#              'sphinx.ext.autodoc',
+#              'sphinx.ext.doctest',
+#              'sphinx.ext.inheritance_diagram']
 
 
 # Add any paths that contain templates here, relative to this directory.

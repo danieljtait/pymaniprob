@@ -1,0 +1,1 @@
+assert 'a' not in globals()
