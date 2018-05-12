@@ -12,10 +12,15 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import os
-import sys
-# sys.path.insert(0, os.path.abspath('.'))
+from __future__ import print_function
+import sys, os, re
 
+# -- Check Sphinx version -----
+import sphinx
+if sphinx.__version__ < "1.6":
+    raise RunTimeError("Sphinx 1.6 or newer required")
+
+needs_sphinx = '1.6'
 
 # -- Project information -----------------------------------------------------
 
@@ -38,31 +43,30 @@ release = '0.0.1'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-#sys.path.append(os.path.abspath('sphinxext'))
 
-extensions = ['matplotlib.sphinxext.only_directives',
-              'matplotlib.sphinxext.plot_directive',
-              'sphinx.ext.mathjax',
-              'sphinx.ext.autodoc',
-              'sphinx.ext.doctest',
-              'sphinx.ext.inheritance_diagram',
-              'numpydoc']
-#extensions = [
-#    'sphinx.ext.autodoc',
-#    'sphinx.ext.intersphinx',
-#    'sphinx.ext.ifconfig',
-#    'matplotlib.sphinxext.only_directives',
-#    'matplotlib.sphinxext.plot_directive'    
-#]
-# Add any Sphinx extension module names here, as strings. They can be extensions
-# coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-#extensions = ['sphinxext.mathmpl',
-#              'sphinxext.only_directives',
-#              'sphinxext.plot_directive',
-#              'sphinx.ext.mathjax',
-#              'sphinx.ext.autodoc',
-#              'sphinx.ext.doctest',
-#              'sphinx.ext.inheritance_diagram']
+sys.path.insert(0, os.path.abspath('../sphinxext'))
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+
+extensions = ['sphinx.ext.autodoc',
+              'sphinx.ext.mathjax']
+              
+
+# Determine if the matplotlib has a recent enough version of the
+# plot_directive.
+try:
+    from matplotlib.sphinxext import plot_directive
+except ImportError:
+    use_matplotlib_plot_directive = False
+else:
+    try:
+        use_matplotlib_plot_directive = (plot_directive.__version__ >= 2)
+    except AttributeError:
+        use_matplotlib_plot_directive = False
+
+if use_matplotlib_plot_directive:
+    extensions.append('matplotlib.sphinxext.plot_directive')
+else:
+    raise RuntimeError("You need a recent enough version of matplotlib")
 
 
 # Add any paths that contain templates here, relative to this directory.
